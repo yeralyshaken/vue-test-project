@@ -1,9 +1,17 @@
 <script>
 export default {
-  mainData() {
+  data() {
     return {
-      data: "Hello!",
+      data: {
+        text: "Hello. It's my first App!",
+        counter: 0,
+      },
     };
+  },
+  methods: {
+    increase() {
+      this.data.counter++;
+    },
   },
 };
 </script>
@@ -17,14 +25,17 @@ export default {
       width="125"
       height="125"
     />
-
-    <div class="wrapper">
-      <HelloWorld msg="{{msg}}" />
-    </div>
+    <h1>{{ data.text }}</h1>
   </header>
+  <div class="cnt">
+    <p>
+      <button @click="increase">Click</button> Count:
+      {{ data.counter }}
+    </p>
+  </div>
 </template>
 
-<style scoped>
+<style>
 header {
   line-height: 1.5;
 }
@@ -32,6 +43,20 @@ header {
 .logo {
   display: block;
   margin: 0 auto 2rem;
+}
+.cnt {
+  margin: auto;
+}
+
+button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
 
 @media (min-width: 1024px) {
